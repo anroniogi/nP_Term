@@ -1,5 +1,8 @@
 // TCP echo client
 #include "headerFiles.h"
+
+#define SIZE 1024
+
 int main (int argc, char* argv[])
 {
     //
@@ -10,8 +13,12 @@ int main (int argc, char* argv[])
     char* string;
     int len;
     int maxLen;
-    char buffer[256+1];
+    int test;
+    char buffer[SIZE];
     char* ptr = buffer;
+    char buffer_rcv[SIZE];
+    char* ptr_rcv = buffer_rcv;
+
     struct sockaddr_in servAddr;
     //
     if(argc !=4)
@@ -43,21 +50,15 @@ int main (int argc, char* argv[])
     while(1){
         printf("보낼 문자열을 입력하세요 : ");
         gets(buffer);
-        if(strcmp(string, "quit")==0)
+        if(strcmp(ptr, "quit")==0)
             break;
 
-        send(s, string, strlen(string), 0);
-        while((n = recv(s, ptr, maxLen, 0)) > 0)
-        {
-            //ptr += n;
-            //maxLen -= n;
-            len += n;
-        }
-        //
-        //buffer[len+1] = '/0';
-        //printf("Echoed string received: ");
-        fputs(buffer, stdout);
+        test = send(s, ptr, SIZE, 0);
+        n = recv(s, ptr_rcv, SIZE, 0);
+        printf("Echoed string received: ");
+        fputs(buffer_rcv, stdout);
         printf("\n");
+//        ptr_rcv = buffer_rcv[0];
     }
 
 //

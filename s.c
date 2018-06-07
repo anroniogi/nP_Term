@@ -1,13 +1,17 @@
 // TCP echo server
 #include "headerFiles.h"
 #define SERVER_PORT 50000
+#define SIZE 1024
+
 int main()
 {
     int test;
     int ls;
     int s;
-    char buffer[256];
+    char buffer[SIZE];
     char* ptr = buffer;
+    char buffer_rcv[SIZE];
+    char* ptr_rcv = buffer_rcv;
     int len=0;
     int maxLen = sizeof(buffer);
     int n=0;
@@ -58,11 +62,13 @@ int main()
             //maxLen -= n;
             len += n;
 	    fputs(buffer, stdout);
+        printf("\n");
 	    test = send(s, ptr, len, 0);
-	    printf("\n send = %d",test);
+//	    printf("\n send = %d",test);
         }
         //send(s, ptr, len, 0);
         //
-        close(s);
     }
+    close(s);
+
 }
