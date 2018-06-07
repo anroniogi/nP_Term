@@ -1,0 +1,4 @@
+/home/sanggu/nP_Term/CMakeFiles/rebuild_cache.dir
+/home/sanggu/nP_Term/CMakeFiles/s.dir
+/home/sanggu/nP_Term/CMakeFiles/edit_cache.dir
+/home/sanggu/nP_Term/CMakeFiles/c.dir

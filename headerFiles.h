@@ -11,3 +11,4 @@
 #include<string.h>
 #include<arpa/inet.h>
 #include<sys/wait.h>
+#include<string.h>
